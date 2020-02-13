@@ -19,11 +19,10 @@ jobs:
     
     - name: Initialize a Repo client
       run: |
+        PATH=~/bin:$PATH
         mkdir workspace
         cd workspace
         git config --global user.name "yuichielectric"
         git config --global user.email "yuichielectric@github.com"
         repo init -u https://android.googlesource.com/platform/manifest
         repo sync
-      env:
-        PATH: ~/bin:$PATH
