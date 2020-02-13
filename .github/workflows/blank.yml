@@ -25,4 +25,4 @@ jobs:
         git config --global user.name "yuichielectric"
         git config --global user.email "yuichielectric@github.com"
         repo init -u https://android.googlesource.com/platform/manifest
-        repo sync
+        repo sync -j8
