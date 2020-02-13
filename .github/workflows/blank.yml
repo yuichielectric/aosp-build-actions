@@ -14,7 +14,6 @@ jobs:
     - name: Install Repo
       run: |
         mkdir ~/bin
-        PATH=~/bin:$PATH
         curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
         chmod a+x ~/bin/repo
     
@@ -25,6 +24,6 @@ jobs:
         git config --global user.name "yuichielectric"
         git config --global user.email "yuichielectric@github.com"
         repo init -u https://android.googlesource.com/platform/manifest
-        
-    - name: Download the Android source tree
-      run: repo sync
+        repo sync
+      env:
+        PATH: ~/bin:$PATH
