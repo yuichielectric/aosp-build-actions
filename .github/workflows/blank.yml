@@ -25,4 +25,4 @@ jobs:
         git config --global user.name "yuichielectric"
         git config --global user.email "yuichielectric@github.com"
         repo init -u https://android.googlesource.com/platform/manifest --depth=1
-        repo sync -j8 -c --no-cache-bundle --no-tags
+        repo sync -j8 -c --no-clone-bundle --no-tags
