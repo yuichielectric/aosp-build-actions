@@ -1,0 +1,28 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-16.04
+
+    steps:
+    - name: Install required packages
+      run: sudo apt-get install git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip
+
+    - name: Install Repo
+      run: |
+        mkdir ~/bin
+        curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
+        chmod a+x ~/bin/repo
+    
+    - name: Initialize a Repo client
+      run: |
+        PATH=~/bin:$PATH
+        mkdir workspace
+        cd workspace
+        git config --global user.name "yuichielectric"
+        git config --global user.email "yuichielectric@github.com"
+        repo init -u https://android.googlesource.com/platform/manifest --depth=1
+        repo sync -j8 -c --no-clone-bundle --no-tags
